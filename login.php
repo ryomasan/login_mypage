@@ -1,3 +1,8 @@
+<?php
+mb_internal_encoding('utf8');
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,11 +21,15 @@
             <div class="form_contents">
                 <div class="mail">
                     <label for="mail">メールアドレス</label><br>
-                    <input type="text" name="mail" id="mail" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                    <input type="text" name="mail" id="mail" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required value="<?php if (!empty($_COOKIE['mail'])) {
+                        echo $_COOKIE['mail'];
+                    } ?>">
                 </div>
                 <div class="pass">
                     <label for="pass">パスワード</label><br>
-                    <input type="password" name="pass" id="pass" pattern="^[a-zA-Z0-9]{6,}$" required>
+                    <input type="password" name="pass" id="pass" pattern="^[a-zA-Z0-9]{6,}$" required  value="<?php if (!empty($_COOKIE['password'])) {
+                        echo $_COOKIE['password'];
+                    } ?>">
                     <!-- 半角全角6文字以上 -->
                 </div>
                 <div class="keep">
